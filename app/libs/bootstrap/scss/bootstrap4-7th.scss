@@ -1,32 +1,32 @@
-.col-xs-5th {
+.col-xs-7th {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.col-sm-5th {
+.col-sm-7th {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.col-md-5th {
+.col-md-7th {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.col-lg-5th {
+.col-lg-7th {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
 	padding-right: 15px;
 	padding-left: 15px;
 }
-.col-xl-5th {
+.col-xl-7th {
 	position: relative;
 	width: 100%;
 	min-height: 1px;
@@ -34,34 +34,34 @@
 	padding-left: 15px;
 }
 @media (min-width: 576px) and (max-width: 767px) {
-	.col-sm-5th {
+	.col-sm-7th {
 		-webkit-box-flex: 0;
-		-ms-flex: 0 0 20%;
-		flex: 0 0 20%;
-		max-width: 20%;
+		-ms-flex: 0 0 14.28%;
+		flex: 0 0 14.28%;
+		max-width: 14.28%;
 	}
 }
 @media (min-width: 768px) and (max-width: 991px) {
-	.col-md-5th {
+	.col-md-7th {
 		-webkit-box-flex: 0;
-		-ms-flex: 0 0 20%;
-		flex: 0 0 20%;
-		max-width: 20%;
+		-ms-flex: 0 0 14.28%;
+		flex: 0 0 14.28%;
+		max-width: 14.28%;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-	.col-lg-5th {
+	.col-lg-7th {
 		-webkit-box-flex: 0;
-		-ms-flex: 0 0 20%;
-		flex: 0 0 20%;
-		max-width: 20%;
+		-ms-flex: 0 0 14.28%;
+		flex: 0 0 14.28%;
+		max-width: 14.28%;
 	}
 }
 @media (min-width: 1200px) {
-	.col-xl-5th {
+	.col-xl-7th {
 		-webkit-box-flex: 0;
-		-ms-flex: 0 0 20%;
-		flex: 0 0 20%;
-		max-width: 20%;
+		-ms-flex: 0 0 14.28%;
+		flex: 0 0 14.28%;
+		max-width: 14.28%;
 	}
 }
