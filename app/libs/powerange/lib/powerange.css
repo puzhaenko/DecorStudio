@@ -50,6 +50,7 @@
   text-align: center;
   top: -9px;
   width: 24px;
+  display: none;
 }
 
 .range-min {
