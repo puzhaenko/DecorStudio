@@ -7,74 +7,9 @@ var xl = window.matchMedia('(min-width: 1200px)');
 
 var elem = document.querySelector('#powerange_slider');
 var position = 3;
-
-/*const event = new KeyboardEvent("keypress", {
-  view: window,
-  keyCode: 13,
-  bubbles: true,
-  cancelable: true
-});*/
-
-
-
-
-
-$("#btn_smaller").click(function() {
-	if(position - 1 >= min_val && position - 1 <= max_val){
-		position = position - 1;
-		document.getElementById("powerange_slider").value = position;
-		set_class();
-	}
-    
-    /*document.querySelector(".powerange_slider").dispatchEvent(event);*/
-});
-$("#btn_bigger").click(function() {
-	if(position + 1 >= min_val && position + 1 <= max_val){
-		position = position + 1;
-		document.getElementById("powerange_slider").value = position;
-		set_class();
-	}
-    /*position = position + 1;
-    alert(position);
-    document.getElementById("powerange_slider").value = position;
-    set_class();*/
-    /*document.querySelector(".powerange_slider").dispatchEvent(event);*/
-
-});
-
-setInterval(function(){
-  $( "#slider_val_inside" ).html(elem.value);
-}, 100); 
-
+var slider = new Powerange(elem, { min: 0, max: 6, step: 1, start: position });
 
 set_slider();
-
-function set_slider(){
-		if (sm.matches){
-			$(".range-bar").remove();
-			init = new Powerange(elem, { min: 0, max: 4, step: 1, start: position });
-		}
-		if (md.matches){
-			$(".range-bar").remove();
-			init = new Powerange(elem, { min: 0, max: 5, step: 1, start: position });
-		}
-		if (lg.matches){
-			$(".range-bar").remove();
-			init = new Powerange(elem, { min: 0, max: 6, step: 1, start: position });
-		}
-		if (xl.matches){
-			$(".range-bar").remove();
-			init = new Powerange(elem, { min: 1, max: 6, step: 1, start: position });
-		}
-/*console.log($('.range-min').html());
-console.log($('.range-max').html());*/
-}
-var min_val = parseInt($('.range-min').html());
-var max_val = parseInt($('.range-max').html());
-/*console.log(min_val);
-console.log(max_val);*/
-
-
 
 $(window).resize(function() {
     clearTimeout(window.resizedFinished);
@@ -85,10 +20,48 @@ $(window).resize(function() {
 
 elem.onchange = set_class;
 
-function set_class() {
-	
-	position = parseInt(elem.value);
 
+// Для отладки
+/*setInterval(function(){
+  $( "#slider_val_inside" ).html(" Position"+position+"MIN: " + slider.options.min + " Elem.value"+elem.value+" MAX: " + slider.options.max);
+}, 100); */
+
+
+
+
+function set_slider(){
+
+		if (sm.matches){
+			slider.options.min = 0;
+			slider.options.max = 4;
+			if(elem.value < slider.options.min) position = slider.options.min;
+			if(elem.value > slider.options.max) position = slider.options.max;
+		}
+		if (md.matches){
+			slider.options.min = 0;
+			slider.options.max = 5;
+			if(elem.value < slider.options.min) position = slider.options.min;
+			if(elem.value > slider.options.max) position = slider.options.max;
+		}
+		if (lg.matches){
+			slider.options.min = 0;
+			slider.options.max = 6;
+			if(elem.value < slider.options.min) position = slider.options.min;
+			if(elem.value > slider.options.max) position = slider.options.max;
+		}
+		if (xl.matches){
+			slider.options.min = 1;
+			slider.options.max = 6;
+			if(elem.value < slider.options.min) position = slider.options.min;
+			if(elem.value > slider.options.max) position = slider.options.max;
+		}
+		slider.setStart(position);
+}
+
+
+function set_class() {
+
+	position = parseInt(elem.value);
 	switch(elem.value) {
 		case "0":
 			$( "div.item" ).attr('class', 'item col-sm-5th col-md-2 col-lg-7th col-xl-7th');
@@ -114,6 +87,23 @@ function set_class() {
 	}
 }
 
+
+$("#btn_smaller").click(function() {
+	if(position - 1 >= slider.options.min){
+		position = position - 1;
+		slider.setStart(position);
+	}
+});
+$("#btn_bigger").click(function() {
+	if(position + 1 <= slider.options.max){
+		position = position + 1;
+		slider.setStart(position);
+	}
+});
+
+
+
+
 var options = {
   strings: ["Свадьбу", "День Рождения", "Юбилей", "Корпоратив"],
   typeSpeed: 100,
@@ -122,10 +112,5 @@ var options = {
 }
 
 var typed = new Typed(".typed_text", options);
-
-
-
-
-
 
 });
